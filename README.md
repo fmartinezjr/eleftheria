@@ -1,1 +1,3 @@
-node server.js & ( cd client && npm start )
+Frontend: npm run client
+Backend: npm run start
+Run Backend & Backend: npm run dev 
