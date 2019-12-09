@@ -15,7 +15,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'build')))
 app.use(express.static(path.join(__dirname,'/build')));
 
-app.listen(5001)
+app.listen(8080)
 
 app.use('/', indexRouter)
 
