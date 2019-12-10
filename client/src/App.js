@@ -15,11 +15,9 @@ const App = props => {
   return(
     <div className="App">
          <header className="App-header">
-           <img src={logo} className="App-logo" alt="logo" />
            <h1 className="App-title">eleftheria!</h1>
+           <p className="App-intro">{state}</p>
          </header>
-        <p className="App-intro">{state}</p>
-        <Auto></Auto>
       </div>
  )
 };
