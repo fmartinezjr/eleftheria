@@ -8,7 +8,7 @@ import Investment from './Investment/Investment';
 import RealEstate from './Mortgage_Real_Estate/RealEstate';
 import Tax from './Tax/Tax';
 import Retirement from './Retirement/Retirement';
-import NotFound from './404/NotFound';
+import NotFound from './NotFound/NotFound';
 
 import * as serviceWorker from './serviceWorker';
 
