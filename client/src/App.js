@@ -14,9 +14,9 @@ const App = props => {
 
   return(
     <div className="App">
+         <Layout></Layout>
          <header className="App-header">
-           <h1 className="App-title">eleftheria!</h1>
-           <Layout></Layout>
+           <h1 className="App-title">eleftheria home page!</h1>
            <p className="App-intro">{state}</p>
          </header>
       </div>
