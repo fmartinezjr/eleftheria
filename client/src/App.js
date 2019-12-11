@@ -2,7 +2,7 @@ import React, { useState, useEffect, Component } from 'react'
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
-import Auto from './Auto/Auto.js'
+import Layout from './Layout/Layout.js'
 
 const App = props => {
     useEffect(() => {
@@ -16,6 +16,7 @@ const App = props => {
     <div className="App">
          <header className="App-header">
            <h1 className="App-title">eleftheria!</h1>
+           <Layout></Layout>
            <p className="App-intro">{state}</p>
          </header>
       </div>
