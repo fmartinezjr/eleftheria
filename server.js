@@ -13,11 +13,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(express.static(path.join(__dirname, 'build')))
-app.use(express.static(path.join(__dirname,'/build')));
+
+// Serve the static files from the React app
+app.use(express.static(path.join(__dirname, '/build')));
+
+app.use('/api', indexRouter)
+
+// Handles any requests that don't match the ones above
+app.get('*', (req,res) =>{
+    res.sendFile(path.join(__dirname+'/build/index.html'));
+});
 
 app.listen(8080)
-
-app.use('/', indexRouter)
-
 module.exports = app;
