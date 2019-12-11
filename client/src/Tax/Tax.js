@@ -1,11 +1,11 @@
 import React from 'react'
-import Nav from '../Components/Nav.js'
+import Layout from '../Components/Layout.js'
 
 class Tax extends React.Component {
   render() {
     return (
     <div>
-        <Nav></Nav>
+        <Layout></Layout>
     </div>
     )
   }
