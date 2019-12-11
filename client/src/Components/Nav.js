@@ -24,7 +24,6 @@ class Nav extends React.Component {
     );
   }
 
-  
         return (
         <div>
         <Tabs

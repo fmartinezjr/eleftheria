@@ -18,14 +18,14 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function ButtonAppBar() {
-  const classes = useStyles();
+class AppBarComponent extends React.Component {
+  render() {
 
   return (
-    <div className={classes.root}>
+    <div>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h6">
            eleftheria
           </Typography>
           <Nav></Nav>
@@ -33,4 +33,6 @@ export default function ButtonAppBar() {
       </AppBar>
     </div>
   );
+  }
 }
+export default AppBarComponent;
