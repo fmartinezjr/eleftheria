@@ -2,6 +2,7 @@ import React, { useState, useEffect, Component } from 'react'
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
+import Layout from './Layout/Layout.js'
 
 const App = props => {
     useEffect(() => {
@@ -14,10 +15,10 @@ const App = props => {
   return(
     <div className="App">
          <header className="App-header">
-           <img src={logo} className="App-logo" alt="logo" />
-           <h1 className="App-title">Welcome!</h1>
+           <h1 className="App-title">eleftheria!</h1>
+           <Layout></Layout>
+           <p className="App-intro">{state}</p>
          </header>
-        <p className="App-intro">{state}</p>
       </div>
  )
 };
