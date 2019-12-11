@@ -11,31 +11,18 @@ import Tab from '@material-ui/core/Tab';
 class Nav extends React.Component {
     render() {
 
-
-  function LinkTab(props) {
-    return (
-      <Tab
-        component="a"
-        onClick={event => {
-          event.preventDefault();
-        }}
-        {...props}
-      />
-    );
-  }
-
         return (
         <div>
         <Tabs
           variant="fullWidth"
           aria-label="nav tabs example"
         >
-          <LinkTab label="Home" href="/" />
-          <LinkTab label="Auto" href="/auto"  />
-          <LinkTab label="Investment" href="/investment"  />
-          <LinkTab label="Real Estate" href="/realestate"  />
-          <LinkTab label="Tax" href="/tax"  />
-          <LinkTab label="Retirement" href="/retirement"  />
+          <Tab label="Home" href="/" />
+          <Tab label="Auto" href="/auto"  />
+          <Tab label="Investment" href="/investment"  />
+          <Tab label="Real Estate" href="/realestate"  />
+          <Tab label="Tax" href="/tax"  />
+          <Tab label="Retirement" href="/retirement"  />
         </Tabs>
         </div>
         )
