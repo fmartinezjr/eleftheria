@@ -1,11 +1,12 @@
 import React from 'react'
-import Links from './Links';
+import AppBar from './AppBar';
 
 class Layout extends React.Component {
     render() {
         return (
         <div>
-            <Links></Links>
+            <AppBar></AppBar>
+
         </div>
         )
       }
