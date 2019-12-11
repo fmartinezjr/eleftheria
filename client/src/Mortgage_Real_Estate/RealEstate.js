@@ -5,7 +5,6 @@ class RealEstate extends React.Component {
   render() {
     return (
     <div>
-      <h1>Real Estate</h1>
         <Layout></Layout>
     </div>
     )
