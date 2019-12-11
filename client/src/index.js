@@ -8,6 +8,7 @@ import Investment from './Investment/Investment';
 import RealEstate from './Mortgage_Real_Estate/RealEstate';
 import Tax from './Tax/Tax';
 import Retirement from './Retirement/Retirement';
+import NotFound from './404/NotFound';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -21,6 +22,7 @@ const routing = (
         <Route path="/realestate" component={RealEstate} />
         <Route path="/tax" component={Tax} />
         <Route path="/retirement" component={Retirement} />
+        <Route component={NotFound} />
       </Switch>
       </div>
     </Router>
