@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
 
-class Links extends React.Component {
+class Nav extends React.Component {
     render() {
         return (
         <div>
@@ -29,5 +29,5 @@ class Links extends React.Component {
         )
       }
 }
-export default Links;
+export default Nav;
 

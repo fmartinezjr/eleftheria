@@ -1,11 +1,13 @@
 import React from 'react'
-import Links from './Links';
+import Nav from './Nav';
+import AppBar from './AppBar';
 
 class Layout extends React.Component {
     render() {
         return (
         <div>
-            <Links></Links>
+            <AppBar></AppBar>
+            <Nav></Nav>
         </div>
         )
       }

@@ -1,12 +1,12 @@
 import React from 'react'
-import Layout from '../Components/Layout.js'
+import Nav from '../Components/Nav.js'
 
 class Tax extends React.Component {
   render() {
     return (
     <div>
       <h1>Tax</h1>
-        <Layout></Layout>
+        <Nav></Nav>
     </div>
     )
   }
