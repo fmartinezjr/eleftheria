@@ -7,7 +7,7 @@ class Layout extends React.Component {
         return (
         <div>
             <AppBar></AppBar>
-            <Nav></Nav>
+
         </div>
         )
       }
