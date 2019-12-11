@@ -2,7 +2,7 @@ import React, { useState, useEffect, Component } from 'react'
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
-import Layout from './Layout/Layout.js'
+import Layout from './Components/Layout.js'
 
 const App = props => {
     useEffect(() => {

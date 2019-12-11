@@ -1,6 +1,5 @@
 import React from 'react'
-import Layout from '../Layout/Layout.js'
-
+import Layout from '../Components/Layout.js'
 
 class Tax extends React.Component {
   render() {
