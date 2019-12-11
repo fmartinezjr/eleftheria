@@ -6,6 +6,8 @@ import App from './App';
 import Auto from './Auto/Auto';
 import Investment from './Investment/Investment';
 import RealEstate from './Mortgage_Real_Estate/RealEstate';
+import Tax from './Tax/Tax';
+import Retirement from './Retirement/Retirement';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -17,6 +19,8 @@ const routing = (
         <Route path="/auto" component={Auto} />
         <Route path="/investment" component={Investment} />
         <Route path="/realestate" component={RealEstate} />
+        <Route path="/tax" component={Tax} />
+        <Route path="/retirement" component={Retirement} />
       </Switch>
       </div>
     </Router>
