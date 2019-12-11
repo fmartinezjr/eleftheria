@@ -3,11 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-
-
-
+import Nav from './Nav';
 
 
 const useStyles = makeStyles(theme => ({
@@ -25,19 +21,6 @@ const useStyles = makeStyles(theme => ({
 export default function ButtonAppBar() {
   const classes = useStyles();
 
-  function LinkTab(props) {
-    return (
-      <Tab
-        component="a"
-        onClick={event => {
-          event.preventDefault();
-        }}
-        {...props}
-      />
-    );
-  }
-  
-
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -45,17 +28,7 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
            eleftheria
           </Typography>
-          <Tabs
-          variant="fullWidth"
-          aria-label="nav tabs example"
-        >
-          <LinkTab label="Home" href="/" />
-          <LinkTab label="Auto" href="/auto"  />
-          <LinkTab label="Investment" href="/investment"  />
-          <LinkTab label="Real Estate" href="/realestate"  />
-          <LinkTab label="Tax" href="/tax"  />
-          <LinkTab label="Retirement" href="/retirement"  />
-        </Tabs>
+          <Nav></Nav>
         </Toolbar>
       </AppBar>
     </div>
