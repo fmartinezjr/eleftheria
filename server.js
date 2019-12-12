@@ -1,11 +1,11 @@
-const express = require("express");
+var express = require("express");
 var createError = require("http-errors");
-const path = require("path");
+var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var indexRouter = require("./routes");
-const app = express();
-const PORT = process.env.PORT || '8080';
+var app = express();
+var PORT = process.env.PORT || '8080';
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -23,4 +23,5 @@ app.get("*", (req, res) => {
 });
 
 app.listen(PORT);
+
 module.exports = app;
