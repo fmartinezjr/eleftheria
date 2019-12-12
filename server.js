@@ -3,10 +3,9 @@ var createError = require("http-errors");
 const path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-
 var indexRouter = require("./routes");
-
 const app = express();
+const PORT = process.env.PORT || '8080';
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -23,5 +22,5 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname + "/build/index.html"));
 });
 
-app.listen(8080);
+app.listen(PORT);
 module.exports = app;
