@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "cd client && npm start",
     "start": "nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"npm start\" \"npm run client\""
+    "dev": "concurrently --kill-others-on-fail \"npm run client\" \"npm start\""
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
     "http-proxy-middleware": "^0.20.0",
     "morgan": "^1.9.1",
     "pg": "^7.14.0",
+    "prettier": "^1.19.1",
     "react-router-dom": "^5.1.2",
     "styled-components": "^4.4.1"
   }
