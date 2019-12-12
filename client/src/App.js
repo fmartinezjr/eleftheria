@@ -3,22 +3,29 @@ import "./App.css";
 import axios from "axios";
 import Layout from "./Components/Layout.js";
 
-const App = props => {
-  useEffect(() => {
-    axios.get("/api/hello").then(res => setState(res.data));
-  }, []);
+class App extends React.Component {
+  state = {
+    posts: []
+  };
 
-  const [state, setState] = useState("");
+  componentDidMount() {
+    axios.get(`api/get/users`).then(res => {
+      const posts = res.data;
+      this.setState({ posts });
+    });
+  }
 
-  return (
-    <div className="App">
-      <Layout></Layout>
-      <header className="App-header">
-        <h1 className="App-title">eleftheria home page!!</h1>
-        <p className="App-intro">{state}</p>
-      </header>
-    </div>
-  );
-};
-
+  render() {
+    return (
+      <div>
+        <Layout></Layout>
+        <ul>
+          {this.state.posts.map(posts => (
+            <li>{posts.username}</li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+}
 export default App;
