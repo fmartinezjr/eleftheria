@@ -6,6 +6,7 @@ var logger = require("morgan");
 var indexRouter = require("./routes");
 var app = express();
 var PORT = process.env.PORT || '8080';
+require('dotenv').config();
 
 app.use(logger("dev"));
 app.use(express.json());
