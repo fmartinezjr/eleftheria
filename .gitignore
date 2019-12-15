@@ -3,6 +3,5 @@ build
 .env
 .DS_Store
 docker-compose.yaml
-.data
-data
+data_db
 sql
