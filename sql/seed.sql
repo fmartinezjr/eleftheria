@@ -1,13 +1,5 @@
-INSERT INTO users (username, email)
-VALUES ('72', 'email@d.com');
-
-INSERT INTO users (username, email)
-VALUES ('2999', 'ema22999il@d.com');
+INSERT INTO transaction (merchant, payment_type, amount)
+VALUES ('Starbucks', 'Debit', 4),('Wendys', 'Cash', 3), ('McDonalds', 'Check', 4);
 
 
-INSERT INTO users (username, email)
-VALUES ('29994', '2999@d.com');
 
-
-INSERT INTO users (username, email)
-VALUES ('255552', 'emfff2ail@d.com');
