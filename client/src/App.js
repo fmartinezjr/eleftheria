@@ -2,7 +2,6 @@ import React from "react";
 import "./App.css";
 import axios from "axios";
 import Layout from "./Components/Layout.js";
-import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -10,6 +9,19 @@ import { TableContainer } from '@material-ui/core';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import styled from 'styled-components';
+
+const StyledTable = styled(Table)`
+  tr:nth-child(even){background-color: #f2f2f2;}
+   tr:hover {background-color: #ddd;}
+   border: 1px solid #ddd;
+`;
+
+const StyledTableHeader = styled(TableHead)`
+  background-color: #00cdbe;
+  color: white;
+`;
+
 
 class App extends React.Component {
  
@@ -30,14 +42,14 @@ class App extends React.Component {
       <div>
         <Layout></Layout>
         <TableContainer component={Paper}>
-      <Table aria-label="simple table">
-        <TableHead>
+      <StyledTable aria-label="simple table">
+        <StyledTableHeader>
           <TableRow>
             <TableCell>Merchent</TableCell>
             <TableCell align="right">Payment Type</TableCell>
             <TableCell align="right">Total</TableCell>
           </TableRow>
-        </TableHead>
+        </StyledTableHeader>
         <TableBody>
           {this.state.transaction_list.map(transaction_list => (
             <TableRow key={transaction_list.merchant}>
@@ -49,7 +61,7 @@ class App extends React.Component {
             </TableRow>
           ))}
         </TableBody>
-      </Table>
+      </StyledTable>
     </TableContainer>
 
 
