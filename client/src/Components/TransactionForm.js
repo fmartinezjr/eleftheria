@@ -5,9 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import styled from "styled-components";
 
 const StyledPaper = styled(Paper)`
-box-sizing: border-box;
-
-  padding: 30px;  
+  padding: 70px;  
   border: 10px;
 `;
 

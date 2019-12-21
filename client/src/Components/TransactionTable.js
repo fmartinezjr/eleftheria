@@ -17,13 +17,19 @@ const StyledTable = styled(Table)`
   tr:hover {
     background-color: #ddd;
   }
-  border: 1px solid #ddd;
+
+  border: 5px;
+  padding: 5px;  
+  margin: 5px;
 `;
 
 const StyledTableHeader = styled(TableHead)`
-  background-color: #00cdbe;
-  color: white;
+background-color: #00cdbe;
+height: 70px;
 `;
+
+
+
 
 
 export class TransactionTable extends React.Component {
