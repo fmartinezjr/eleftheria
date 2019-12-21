@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Paper from "@material-ui/core/Paper";
-import Typography from '@material-ui/core/Typography';
+import Typography from "@material-ui/core/Typography";
 import styled from "styled-components";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -19,72 +19,68 @@ const StyledTable = styled(Table)`
   }
 
   border: 5px;
-  padding: 5px;  
+  padding: 5px;
   margin: 5px;
 `;
 
 const StyledTableHeader = styled(TableHead)`
-background-color: #00cdbe;
-height: 70px;
+  background-color: #00cdbe;
+  height: 70px;
 `;
 
 const StyledH3 = styled.h3`
-color: white;
-height: 10px;
+  color: white;
+  height: 10px;
 `;
 
-
-
-
-
 export class TransactionTable extends React.Component {
-    state = {
-        transaction_list: []
-      };
-    
-      componentDidMount() {
-        axios.get(`api/get/transaction`).then(res => {
-          const transaction_list = res.data;
-          this.setState({ transaction_list });
-        });
-      }
-    
-  
-    render() {
-      return (
+  state = {
+    transaction_list: []
+  };
 
-
-        <Paper>
-              <TableContainer component={Paper}>
-                <StyledTable aria-label="simple table">
-                  <StyledTableHeader>
-                    <TableRow>
-                      <TableCell><StyledH3>Merchant</StyledH3></TableCell>
-                      <TableCell align="right"><StyledH3>Payment Type</StyledH3></TableCell>
-                      <TableCell align="right"><StyledH3>Total</StyledH3></TableCell>
-                    </TableRow>
-                  </StyledTableHeader>
-                  <TableBody>
-                    {this.state.transaction_list.map(transaction_list => (
-                      <TableRow key={transaction_list.merchant}>
-                        <TableCell component="th" scope="row">
-                          {transaction_list.merchant}
-                        </TableCell>
-                        <TableCell align="right">
-                          {transaction_list.merchant}
-                        </TableCell>
-                        <TableCell align="right">
-                          {transaction_list.payment_type}
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </StyledTable>
-              </TableContainer>
-            </Paper>
-
-
-        
-      );
-    }
+  componentDidMount() {
+    axios.get(`api/get/transaction`).then(res => {
+      const transaction_list = res.data;
+      this.setState({ transaction_list });
+    });
   }
+
+  render() {
+    return (
+      <Paper>
+        <TableContainer component={Paper}>
+          <StyledTable aria-label="simple table">
+            <StyledTableHeader>
+              <TableRow>
+                <TableCell>
+                  <StyledH3>Merchant</StyledH3>
+                </TableCell>
+                <TableCell align="right">
+                  <StyledH3>Payment Type</StyledH3>
+                </TableCell>
+                <TableCell align="right">
+                  <StyledH3>Total</StyledH3>
+                </TableCell>
+              </TableRow>
+            </StyledTableHeader>
+            <TableBody>
+              {this.state.transaction_list.map(transaction_list => (
+                <TableRow key={transaction_list.merchant}>
+                  <TableCell component="th" scope="row">
+                    {transaction_list.merchant}
+                  </TableCell>
+                  <TableCell align="right">
+                    {transaction_list.merchant}
+                  </TableCell>
+                  <TableCell align="right">
+                    {transaction_list.payment_type}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </StyledTable>
+        </TableContainer>
+      </Paper>
+    );
+  }
+}

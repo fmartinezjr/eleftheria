@@ -5,15 +5,12 @@ import Typography from "@material-ui/core/Typography";
 import Nav from "./Nav";
 import styled from "styled-components";
 
-const StyledAppBar= styled(AppBar)`
-&& {
-  background-color: #00cdbe;
-  height: 70px;
-}
+const StyledAppBar = styled(AppBar)`
+  && {
+    background-color: #00cdbe;
+    height: 70px;
+  }
 `;
-
-
-
 
 class AppBarComponent extends React.Component {
   render() {
