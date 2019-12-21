@@ -28,6 +28,11 @@ background-color: #00cdbe;
 height: 70px;
 `;
 
+const StyledH3 = styled.h3`
+color: white;
+height: 10px;
+`;
+
 
 
 
@@ -54,9 +59,9 @@ export class TransactionTable extends React.Component {
                 <StyledTable aria-label="simple table">
                   <StyledTableHeader>
                     <TableRow>
-                      <TableCell>Merchant</TableCell>
-                      <TableCell align="right">Payment Type</TableCell>
-                      <TableCell align="right">Total</TableCell>
+                      <TableCell><StyledH3>Merchant</StyledH3></TableCell>
+                      <TableCell align="right"><StyledH3>Payment Type</StyledH3></TableCell>
+                      <TableCell align="right"><StyledH3>Total</StyledH3></TableCell>
                     </TableRow>
                   </StyledTableHeader>
                   <TableBody>

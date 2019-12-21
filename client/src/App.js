@@ -8,22 +8,26 @@ import { TransactionForm } from "./Components/TransactionForm";
 import { TransactionTable } from "./Components/TransactionTable";
 import Grid from "@material-ui/core/Grid";
 
+const StyledGrid = styled(Grid)`
+  border: 2px;
+`;
+
 class App extends React.Component {
   render() {
     return (
       <div>
         <Layout></Layout>
 
-        <Grid container spacing={3}>
-          <Grid xs={12} sm={6}>
+        <StyledGrid container spacing={3}>
+          <StyledGrid xs={12} sm={6}>
             <Paper>
               <TransactionForm></TransactionForm>
             </Paper>
-          </Grid>
-          <Grid xs={12} sm={6}>
+          </StyledGrid>
+          <StyledGrid xs={12} sm={6}>
             <TransactionTable></TransactionTable>
-          </Grid>
-        </Grid>
+          </StyledGrid>
+        </StyledGrid>
       </div>
     );
   }
