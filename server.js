@@ -1,4 +1,4 @@
-require('dotenv').config();
+require("dotenv").config();
 var express = require("express");
 var createError = require("http-errors");
 var path = require("path");
@@ -7,7 +7,6 @@ var logger = require("morgan");
 var indexRouter = require("./routes");
 var app = express();
 var PORT = process.env.PORT;
-
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -24,9 +23,8 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname + "/build/index.html"));
 });
 
-
 app.listen(PORT, () => {
-  console.log(`App running on port ${PORT}.`)
-})
+  console.log(`App running on port ${PORT}.`);
+});
 
 module.exports = app;

@@ -22,8 +22,8 @@ class App extends React.Component {
           <StyledGrid xs={12} sm={6}>
             <Paper>
               <TransactionForm></TransactionForm>
-              <Chart></Chart>
             </Paper>
+            <Chart></Chart>
           </StyledGrid>
           <StyledGrid xs={12} sm={6}>
             <TransactionTable></TransactionTable>

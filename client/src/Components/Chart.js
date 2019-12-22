@@ -5,7 +5,7 @@ import HighchartsReact from 'highcharts-react-official';
 
 
 
-const chart_1 = {
+const chartDetails_1 = {
     chart: {
       borderColor: '##ffffff',
       borderWidth: 2,
@@ -27,14 +27,10 @@ const chart_1 = {
   };
 
   export class Chart extends React.Component {
-
-
-
   render() {
-
     return (
       <div>
-        <HighchartsReact highcharts={Highcharts} options={chart_1} />
+        <HighchartsReact highcharts={Highcharts} options={chartDetails_1} />
       </div>
  
         );
