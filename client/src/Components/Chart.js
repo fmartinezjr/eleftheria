@@ -5,17 +5,24 @@ import HighchartsReact from 'highcharts-react-official';
 
 
 
-const options = {
+const chart_1 = {
     chart: {
-      type: 'spline'
+      borderColor: '##ffffff',
+      borderWidth: 2,
+      type: 'bar',
     },
     title: {
-      text: 'My chart'
+      text: 'eleftheria chart'
     },
+    subtitle: {
+      text: 'A demo'
+  },
     series: [
       {
-        data: [1, 2, 1, 4, 3, 6]
-      }
+        data: [1, 2, 1, 4, 3, 6],
+        color: '#00cdbe'
+      },
+
     ]
   };
 
@@ -27,7 +34,7 @@ const options = {
 
     return (
       <div>
-        <HighchartsReact highcharts={Highcharts} options={options} />
+        <HighchartsReact highcharts={Highcharts} options={chart_1} />
       </div>
  
         );
