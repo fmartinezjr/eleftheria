@@ -5,6 +5,7 @@ import Paper from "@material-ui/core/Paper";
 import styled from "styled-components";
 import { TransactionForm } from "./Components/TransactionForm";
 import { TransactionTable } from "./Components/TransactionTable";
+import { Chart } from "./Components/Chart";
 import Grid from "@material-ui/core/Grid";
 
 const StyledGrid = styled(Grid)`
@@ -18,12 +19,13 @@ class App extends React.Component {
         <Layout></Layout>
 
         <StyledGrid container spacing={3}>
-          <StyledGrid xs={12} sm={6}>
+          <StyledGrid sm={6}>
             <Paper>
               <TransactionForm></TransactionForm>
             </Paper>
+            <Chart></Chart>
           </StyledGrid>
-          <StyledGrid xs={12} sm={6}>
+          <StyledGrid sm={6}>
             <TransactionTable></TransactionTable>
           </StyledGrid>
         </StyledGrid>
