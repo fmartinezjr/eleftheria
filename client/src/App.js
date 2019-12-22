@@ -21,7 +21,7 @@ class App extends React.Component {
         <StyledGrid container spacing={3}>
           <StyledGrid xs={12} sm={6}>
             <Paper>
-            <TransactionForm></TransactionForm>
+              <TransactionForm></TransactionForm>
             </Paper>
           </StyledGrid>
           <StyledGrid xs={12} sm={6}>
