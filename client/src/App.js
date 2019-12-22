@@ -19,13 +19,13 @@ class App extends React.Component {
         <Layout></Layout>
 
         <StyledGrid container spacing={3}>
-          <StyledGrid xs={12} sm={6}>
+          <StyledGrid sm={6}>
             <Paper>
               <TransactionForm></TransactionForm>
             </Paper>
             <Chart></Chart>
           </StyledGrid>
-          <StyledGrid xs={12} sm={6}>
+          <StyledGrid sm={6}>
             <TransactionTable></TransactionTable>
           </StyledGrid>
         </StyledGrid>
