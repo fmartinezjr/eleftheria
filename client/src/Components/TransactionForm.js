@@ -32,12 +32,12 @@ export class TransactionForm extends React.Component {
     e.preventDefault();
     // get our form data out of state
     const { merchant, paymentType, total } = this.state;
-    console.log("onsubmit");
     console.log(merchant);
     console.log(paymentType);
-    axios.post('/post/transaction', { merchant, paymentType, total })
-      .then((result) => {
-        console.log("done");
+    axios.post('api/post/transaction', {merchant, paymentType, total })
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
       });
   }
 
@@ -50,14 +50,21 @@ export class TransactionForm extends React.Component {
           Add Transaction
         </Typography>
         <form onSubmit={this.onSubmit}>
-        <label htmlFor="merchant">Merchant</label>
+        <label>Merchant
         <input id="merchant" name="merchant" type="text" value={merchant} onChange={this.onChange}/>
+        </label>
+
         <br/>
-        <label htmlFor="email">Payment Type</label>
+        <label>Payment Type
         <input id="paymentType" name="paymentType" type="text" value={paymentType} onChange={this.onChange}/>
+        </label>
+
+
         <br/>
-        <label htmlFor="total">Total</label>
+        <label>Total
         <input id="total" name="total" type="text" value={total} onChange={this.onChange}/>
+        </label>
+
         <br/>
         <button type="submit">Submit</button>
       </form>
