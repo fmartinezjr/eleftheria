@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import axios from "axios";
 import Layout from "./Components/Layout.js";
 import Paper from "@material-ui/core/Paper";
 import styled from "styled-components";

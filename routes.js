@@ -3,13 +3,11 @@ var router = express.Router();
 var pool = require("./db");
 
 router.get("/get/transaction", (req, res, next) => {
-  console.log(res.body);
   pool.query(`SELECT * FROM transaction`, (err, data) => {
     if (err) {
       next(err)
     } else {
       res.json(data.rows);
-      console.log(data.rows);
     }
   });
 });
