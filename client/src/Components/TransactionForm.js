@@ -12,8 +12,6 @@ const StyledPaper = styled(Paper)`
 export class TransactionForm extends React.Component {
   constructor(props) {
     super(props);
-
-  
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -21,12 +19,16 @@ export class TransactionForm extends React.Component {
     event.preventDefault();
     const data = new FormData(event.target);
 
-    alert("A form was submitted ");
-    
-    fetch('/post/transactions', {
-      method: 'POST',
-      body: data,
+
+
+    axios.post('/post/transaction', {
+
+
+     
     });
+    console.log("eror");
+    
+ 
   }
 
 
@@ -41,10 +43,10 @@ export class TransactionForm extends React.Component {
         <input id="merchant" name="merchant" type="text" />
         <br/>
         <label htmlFor="email">Payment Type</label>
-        <input id="paymentType" name="paymentType" type="paymentType" />
+        <input id="paymentType" name="paymentType" type="text" />
         <br/>
         <label htmlFor="total">Total</label>
-        <input id="total" name="total" type="total" />
+        <input id="total" name="total" type="text" />
         <br/>
         <button>Send data!</button>
       </form>

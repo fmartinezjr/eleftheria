@@ -13,14 +13,18 @@ router.get("/get/transaction", (req, res, next) => {
 });
 
 router.post("/post/transaction", (req, res, next) => {
-  pool.query(`INSERT INTO transaction (merchant, payment_type, amount) VALUES ($1, $2, $3)`, (err, data) => {
+
+  const { merchant, payment_type, amount} = req.body;
+
+  pool.query(`INSERT INTO transaction (merchant, payment_type, amount) VALUES ($1, $2, $3)`, [merchant, payment_type, amount], (err, results) => {
     if (err) {
       next(err)
     } else {
-      res.json(data.rows);
+      res.status(201).send(`Added:`);
     }
   });
 });
+
 
 router.get("*", (req, res) =>
   res.status(200).send({

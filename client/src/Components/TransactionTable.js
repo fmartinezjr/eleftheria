@@ -70,10 +70,10 @@ export class TransactionTable extends React.Component {
                     {transaction_list.merchant}
                   </TableCell>
                   <TableCell align="right">
-                    {transaction_list.merchant}
+                    {transaction_list.payment_type}
                   </TableCell>
                   <TableCell align="right">
-                    {transaction_list.payment_type}
+                    $ {transaction_list.amount}
                   </TableCell>
                 </TableRow>
               ))}
