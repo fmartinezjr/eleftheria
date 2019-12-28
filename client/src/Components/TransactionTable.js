@@ -34,13 +34,12 @@ const StyledH3 = styled.h3`
 
 export class TransactionTable extends React.Component {
   state = {
-    transaction_list: []
+    transaction_list: [],
   };
 
   componentDidMount() {
     axios.get(`api/get/transaction`).then(res => {
-      const transaction_list = res.data;
-      this.setState({ transaction_list });
+      this.setState({ transaction_list: res.data });
     });
   }
 
