@@ -67,17 +67,17 @@ export default class TransactionForm extends React.Component {
         </Typography>
         <form onSubmit={this.onSubmit}>
         <label>Merchant
-        <input id="merchant" name="merchant" type="text" value={merchant} onChange={this.onChange}/>
+        <input id="merchant" name="merchant" placeholder="Merchant" type="text" value={merchant} onChange={this.onChange}/>
         </label>
 
         <br/>
         <label>Payment Type
-        <input id="paymentType" name="paymentType" type="text" value={paymentType} onChange={this.onChange}/>
+        <input id="paymentType" name="paymentType" placeholder="Payment Type" type="text" value={paymentType} onChange={this.onChange}/>
         </label>
 
         <br/>
         <label>Total
-        <input id="total" name="total" type="text" value={total} onChange={this.onChange}/>
+        <input id="total" name="total" type="text" placeholder="Total" value={total} onChange={this.onChange}/>
         </label>
 
         <br/>
