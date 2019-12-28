@@ -32,7 +32,7 @@ const StyledH3 = styled.h3`
   height: 10px;
 `;
 
-export class TransactionTable extends React.Component {
+export default class TransactionTable extends React.Component {
   state = {
     transaction_list: [],
   };

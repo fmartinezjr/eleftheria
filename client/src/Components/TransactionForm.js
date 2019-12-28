@@ -17,7 +17,7 @@ const StyledButton = styled(Button)`
   }
 `;
 
-export class TransactionForm extends React.Component {
+export default class TransactionForm extends React.Component {
   constructor() {
     super();
     this.state = {

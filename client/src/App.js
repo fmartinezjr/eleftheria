@@ -3,8 +3,8 @@ import "./App.css";
 import Layout from "./Components/Layout.js";
 import Paper from "@material-ui/core/Paper";
 import styled from "styled-components";
-import { TransactionForm } from "./Components/TransactionForm";
-import { TransactionTable } from "./Components/TransactionTable";
+import TransactionForm from "./Components/TransactionForm";
+import TransactionTable from "./Components/TransactionTable";
 import { Chart } from "./Components/Chart";
 import Grid from "@material-ui/core/Grid";
 
