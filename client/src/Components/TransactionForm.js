@@ -14,6 +14,8 @@ const StyledButton = styled(Button)`
   && {
     background-color: #00cdbe;
     margin: 10px;
+    color: white;
+
   }
 `;
 
