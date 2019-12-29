@@ -9,12 +9,11 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
-import axios from "axios";
 import Button from '@material-ui/core/Button';
 
 const StyledPaper = styled(Paper)`
-  padding: 70px;
-  border: 10px;
+  padding: 5px;
+  border: 5px;
 `;
 
 const StyledButton = styled(Button)`
@@ -51,16 +50,14 @@ const StyledH3 = styled.h3`
 
 export default class TransactionTable extends React.Component {
   state = {
-
     transaction_list: []
   }
 
 
       componentDidMount() {
           this.setState({
-           
+            transaction_list: this.props.data
           });
-
       }
     
   render() {
@@ -74,7 +71,7 @@ export default class TransactionTable extends React.Component {
     console.log(this.state.transaction_list);
 
     return (
-      <Paper>
+      <StyledPaper>
 
         <TableContainer component={Paper}>
           <StyledTable aria-label="simple table">
@@ -115,7 +112,7 @@ export default class TransactionTable extends React.Component {
             </TableBody>
           </StyledTable>
         </TableContainer>
-      </Paper>
+      </StyledPaper>
     );
   }
 }

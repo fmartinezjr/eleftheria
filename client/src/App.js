@@ -17,7 +17,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      transaction_list_1: []
+      list: []
     };
 
   }
@@ -25,7 +25,7 @@ class App extends React.Component {
 
   componentDidMount() {
     axios.get(`api/get/transaction`).then(res => {
-      this.setState({ transaction_list_1: res.data });
+      this.setState({list: res.data });
 
     });
 
@@ -49,7 +49,7 @@ class App extends React.Component {
             <Chart></Chart>
           </StyledGrid>
           <StyledGrid sm={6}>
-            <TransactionTable data={this.state.transaction_list_1}></TransactionTable>
+            <TransactionTable data={this.state.list}></TransactionTable>
           </StyledGrid>
         </StyledGrid>
       </div>
