@@ -55,7 +55,6 @@ export default class TransactionTable extends React.Component {
 
   componentDidMount() {
 
-
       this.setState({
         transaction_list: this.props.data 
       });
@@ -66,7 +65,7 @@ export default class TransactionTable extends React.Component {
   render() {
     //destructure prop
     const { data } = this.props;
-    
+
     return (
       <StyledPaper>
 

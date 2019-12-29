@@ -23,8 +23,8 @@ class App extends React.Component {
     this.reloadData = this.reloadData.bind(this);
   }
 
-  reloadData() {
-    //this.fetchData(state);
+  reloadData(state) {
+    this.fetchData();
   }
 
   fetchData() {
@@ -41,7 +41,7 @@ class App extends React.Component {
         <StyledGrid container spacing={3}>
           <StyledGrid sm={6}>
             <Paper>
-            <TransactionForm ></TransactionForm>
+            <TransactionForm reloadData={this.reloadData}></TransactionForm>
             </Paper>
             <Chart></Chart>
           </StyledGrid>
