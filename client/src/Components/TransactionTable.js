@@ -54,19 +54,20 @@ export default class TransactionTable extends React.Component {
   }
 
 
-      componentDidMount() {
-          this.setState({
-            transaction_list: this.props.data
-          });
-      }
-    
+  componentDidMount() {
+
+
+      this.setState({
+        transaction_list: this.props.data 
+      });
+
+      this.props.fetchData()
+  }
+
   render() {
     console.log("one");
     console.log(this.props);
-    console.log("rhree");
-    console.log(this.transaction_list);
-    console.log("rhree");
-    console.log(this.props.transaction_list);
+
     console.log("rhree");
     console.log(this.state.transaction_list);
 
@@ -92,7 +93,7 @@ export default class TransactionTable extends React.Component {
               </TableRow>
             </StyledTableHeader>
             <TableBody>
-              {this.state.transaction_list.map(transaction_list => (
+              {this.props.data.map(transaction_list => (
                 <TableRow key={transaction_list.merchant}>
                   <TableCell component="th" scope="row">
                     {transaction_list.merchant}

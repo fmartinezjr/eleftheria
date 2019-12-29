@@ -14,33 +14,30 @@ const StyledGrid = styled(Grid)`
 `;
 
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       list: []
     };
-
+    this.fetchData = this.fetchData.bind(this);
+    this.reloadData = this.reloadData.bind(this);
   }
 
+  reloadData() {
+    //this.fetchData(state);
+  }
 
-  componentDidMount() {
+  fetchData() {
     axios.get(`api/get/transaction`).then(res => {
       this.setState({list: res.data });
-
     });
 
-
-    
   }
 
   render() {
-
-
-
     return (
       <div>
         <Layout></Layout>
-
         <StyledGrid container spacing={3}>
           <StyledGrid sm={6}>
             <Paper>
@@ -49,7 +46,7 @@ class App extends React.Component {
             <Chart></Chart>
           </StyledGrid>
           <StyledGrid sm={6}>
-            <TransactionTable data={this.state.list}></TransactionTable>
+            <TransactionTable data={this.state.list} fetchData={this.fetchData}></TransactionTable>
           </StyledGrid>
         </StyledGrid>
       </div>
