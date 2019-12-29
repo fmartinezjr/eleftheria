@@ -52,9 +52,11 @@ export default class TransactionForm extends React.Component {
       amount: data.total,
     }})
       .then(res => {
-        console.log(res);
-        console.log(res.data);
+        this.props.reloadData();
       });
+
+
+     
   }
 
 
@@ -81,7 +83,7 @@ export default class TransactionForm extends React.Component {
         </label>
 
         <br/>
-        <StyledButton  variant="contained" type="submit"  onClick={this.props.greet}>Submit</StyledButton>
+        <StyledButton  variant="contained" type="submit">Submit</StyledButton>
       </form>
       </StyledPaper>
     );

@@ -53,9 +53,7 @@ export default class TransactionTable extends React.Component {
     transaction_list: []
   }
 
-
   componentDidMount() {
-
 
       this.setState({
         transaction_list: this.props.data 
@@ -65,11 +63,8 @@ export default class TransactionTable extends React.Component {
   }
 
   render() {
-    console.log("one");
-    console.log(this.props);
-
-    console.log("rhree");
-    console.log(this.state.transaction_list);
+    //destructure prop
+    const { data } = this.props;
 
     return (
       <StyledPaper>
@@ -93,7 +88,7 @@ export default class TransactionTable extends React.Component {
               </TableRow>
             </StyledTableHeader>
             <TableBody>
-              {this.props.data.map(transaction_list => (
+              {data.map(transaction_list => (
                 <TableRow key={transaction_list.merchant}>
                   <TableCell component="th" scope="row">
                     {transaction_list.merchant}
