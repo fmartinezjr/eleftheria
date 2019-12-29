@@ -81,18 +81,8 @@ export default class TransactionForm extends React.Component {
         </label>
 
         <br/>
-        <StyledButton  variant="contained" type="submit" onClick={this.props.greet}>Submit </StyledButton>
+        <StyledButton  variant="contained" type="submit"  onClick={this.props.greet}>Submit</StyledButton>
       </form>
-
-      <hr/>
-
-      <button
-      
-      onClick={this.props.greet}>Greet!
-      
-
-
-      </button>
       </StyledPaper>
     );
   }

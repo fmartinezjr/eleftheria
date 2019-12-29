@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import Paper from "@material-ui/core/Paper";
 import styled from "styled-components";
 import Table from "@material-ui/core/Table";
@@ -10,6 +9,22 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
+import axios from "axios";
+import Button from '@material-ui/core/Button';
+
+const StyledPaper = styled(Paper)`
+  padding: 70px;
+  border: 10px;
+`;
+
+const StyledButton = styled(Button)`
+  && {
+    background-color: #00cdbe;
+    margin: 10px;
+    color: white;
+
+  }
+`;
 
 const StyledTable = styled(Table)`
   tr:nth-child(even) {
@@ -36,16 +51,28 @@ const StyledH3 = styled.h3`
 
 export default class TransactionTable extends React.Component {
   state = {
-    transaction_list: [],
-  };
 
-  componentDidMount() {
-    axios.get(`api/get/transaction`).then(res => {
-      this.setState({ transaction_list: res.data });
-    });
+    transaction_list: []
   }
 
+
+      componentDidMount() {
+          this.setState({
+           
+          });
+
+      }
+    
   render() {
+    console.log("one");
+    console.log(this.props);
+    console.log("rhree");
+    console.log(this.transaction_list);
+    console.log("rhree");
+    console.log(this.props.transaction_list);
+    console.log("rhree");
+    console.log(this.state.transaction_list);
+
     return (
       <Paper>
 

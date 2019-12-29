@@ -7,24 +7,36 @@ import TransactionForm from "./Components/TransactionForm";
 import TransactionTable from "./Components/TransactionTable";
 import { Chart } from "./Components/Chart";
 import Grid from "@material-ui/core/Grid";
+import axios from "axios";
 
 const StyledGrid = styled(Grid)`
   border: 2px;
 `;
 
 class App extends React.Component {
-  state = {
-    transaction_list: [],
-  };
-
-  
-  onGreet() {
-    alert("hello");
+  constructor() {
+    super();
+    this.state = {
+      transaction_list_1: []
+    };
 
   }
 
 
+  componentDidMount() {
+    axios.get(`api/get/transaction`).then(res => {
+      this.setState({ transaction_list_1: res.data });
+
+    });
+
+
+    
+  }
+
   render() {
+
+
+
     return (
       <div>
         <Layout></Layout>
@@ -32,12 +44,12 @@ class App extends React.Component {
         <StyledGrid container spacing={3}>
           <StyledGrid sm={6}>
             <Paper>
-              <TransactionForm  greet={this.onGreet}></TransactionForm>
+            <TransactionForm ></TransactionForm>
             </Paper>
             <Chart></Chart>
           </StyledGrid>
           <StyledGrid sm={6}>
-            <TransactionTable></TransactionTable>
+            <TransactionTable data={this.state.transaction_list_1}></TransactionTable>
           </StyledGrid>
         </StyledGrid>
       </div>
