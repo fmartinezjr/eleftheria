@@ -13,6 +13,17 @@ const StyledGrid = styled(Grid)`
 `;
 
 class App extends React.Component {
+  state = {
+    transaction_list: [],
+  };
+
+  
+  onGreet() {
+    alert("hello");
+
+  }
+
+
   render() {
     return (
       <div>
@@ -21,7 +32,7 @@ class App extends React.Component {
         <StyledGrid container spacing={3}>
           <StyledGrid sm={6}>
             <Paper>
-              <TransactionForm></TransactionForm>
+              <TransactionForm  greet={this.onGreet}></TransactionForm>
             </Paper>
             <Chart></Chart>
           </StyledGrid>
