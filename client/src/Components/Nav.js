@@ -2,8 +2,7 @@ import React from "react";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 
-class Nav extends React.Component {
-  render() {
+export default function Nav() {
     return (
       <div>
         <Tabs variant="fullWidth" aria-label="nav tabs example">
@@ -16,6 +15,4 @@ class Nav extends React.Component {
         </Tabs>
       </div>
     );
-  }
 }
-export default Nav;

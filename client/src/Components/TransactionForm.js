@@ -3,13 +3,23 @@ import axios from "axios";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import styled from "styled-components";
+import Button from '@material-ui/core/Button';
 
 const StyledPaper = styled(Paper)`
   padding: 70px;
   border: 10px;
 `;
 
-export class TransactionForm extends React.Component {
+const StyledButton = styled(Button)`
+  && {
+    background-color: #00cdbe;
+    margin: 10px;
+    color: white;
+
+  }
+`;
+
+export default class TransactionForm extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -19,27 +29,24 @@ export class TransactionForm extends React.Component {
     };
   }
 
-  onChange = (e) => {
-    /*
-      Because we named the inputs to match their
-      corresponding values in state, it's
-      super easy to update the state
-    */
-    this.setState({ [e.target.name]: e.target.value });
+  //what comes in from input gets assigned to the stae parameter. handles the changes
+  onChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   onSubmit = (e) => {
+    //stop browser from reloading the page
     e.preventDefault();
-    // get our form data out of state
- 
+
+    // new object
     const data = {
       merchant: this.state.merchant,
       paymentType: this.state.paymentType,
       total: this.state.total
     };
 
-
-    axios.post('api/post/transaction', {data},  {params: {
+    //using axios to post to my express api. the object "data" is the payload
+    axios.post('api/post/transaction', { data },  {params: {
       merchant: data.merchant,
       payment_type: data.paymentType,
       amount: data.total,
@@ -60,21 +67,21 @@ export class TransactionForm extends React.Component {
         </Typography>
         <form onSubmit={this.onSubmit}>
         <label>Merchant
-        <input id="merchant" name="merchant" type="text" value={merchant} onChange={this.onChange}/>
+        <input id="merchant" name="merchant" placeholder="Merchant" type="text" value={merchant} onChange={this.onChange}/>
         </label>
 
         <br/>
         <label>Payment Type
-        <input id="paymentType" name="paymentType" type="text" value={paymentType} onChange={this.onChange}/>
+        <input id="paymentType" name="paymentType" placeholder="Payment Type" type="text" value={paymentType} onChange={this.onChange}/>
         </label>
 
         <br/>
         <label>Total
-        <input id="total" name="total" type="text" value={total} onChange={this.onChange}/>
+        <input id="total" name="total" type="text" placeholder="Total" value={total} onChange={this.onChange}/>
         </label>
 
         <br/>
-        <button type="submit">Submit</button>
+        <StyledButton  variant="contained" type="submit"  onClick={this.props.greet}>Submit</StyledButton>
       </form>
       </StyledPaper>
     );

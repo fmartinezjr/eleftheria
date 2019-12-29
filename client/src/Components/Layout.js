@@ -1,13 +1,11 @@
 import React from "react";
 import AppBar from "./AppBar";
 
-class Layout extends React.Component {
-  render() {
+export default function Layout() {
     return (
       <div>
         <AppBar></AppBar>
       </div>
     );
-  }
-}
-export default Layout;
+};
+

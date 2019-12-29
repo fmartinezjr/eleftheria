@@ -3,30 +3,50 @@ import "./App.css";
 import Layout from "./Components/Layout.js";
 import Paper from "@material-ui/core/Paper";
 import styled from "styled-components";
-import { TransactionForm } from "./Components/TransactionForm";
-import { TransactionTable } from "./Components/TransactionTable";
+import TransactionForm from "./Components/TransactionForm";
+import TransactionTable from "./Components/TransactionTable";
 import { Chart } from "./Components/Chart";
 import Grid from "@material-ui/core/Grid";
+import axios from "axios";
 
 const StyledGrid = styled(Grid)`
   border: 2px;
 `;
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      list: []
+    };
+    this.fetchData = this.fetchData.bind(this);
+    this.reloadData = this.reloadData.bind(this);
+  }
+
+  reloadData() {
+    //this.fetchData(state);
+  }
+
+  fetchData() {
+    axios.get(`api/get/transaction`).then(res => {
+      this.setState({list: res.data });
+    });
+
+  }
+
   render() {
     return (
       <div>
         <Layout></Layout>
-
         <StyledGrid container spacing={3}>
           <StyledGrid sm={6}>
             <Paper>
-              <TransactionForm></TransactionForm>
+            <TransactionForm ></TransactionForm>
             </Paper>
             <Chart></Chart>
           </StyledGrid>
           <StyledGrid sm={6}>
-            <TransactionTable></TransactionTable>
+            <TransactionTable data={this.state.list} fetchData={this.fetchData}></TransactionTable>
           </StyledGrid>
         </StyledGrid>
       </div>
