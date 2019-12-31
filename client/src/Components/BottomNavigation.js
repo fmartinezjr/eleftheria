@@ -10,8 +10,8 @@ const StyledBottomNavigation = styled(BottomNavigation)`
   }
 `;
 
-class BottomNavigation extends React.Component {
-  render() {
+
+export default function BottomNav(){
     return (
       <div>
           <StyledBottomNavigation>
@@ -19,6 +19,4 @@ class BottomNavigation extends React.Component {
           </StyledBottomNavigation>
       </div>
     );
-  }
 }
-export default AppBarComponent;
