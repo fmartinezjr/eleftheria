@@ -76,7 +76,7 @@ export default class TransactionTable extends React.Component {
                 <TableCell>
                   <StyledH3>Merchant</StyledH3>
                 </TableCell>
-                <TableCell align="right">
+                <TableCell align="left">
                   <StyledH3>Payment Type</StyledH3>
                 </TableCell>
                 <TableCell align="right">
