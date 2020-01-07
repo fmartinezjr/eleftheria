@@ -29,6 +29,9 @@ import axios from "axios";
         borderColor: '##ffffff',
         borderWidth: 2,
         type: 'bar',
+        width: 600,
+        marginLeft: 50
+
       },
       title: {
         text: 'Spending Chart'
