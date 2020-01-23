@@ -15,11 +15,12 @@ router.get("/get/transaction", (req, res, next) => {
 
 router.get("/get/transaction/:id", (req, res, next) => {
   const id = parseInt(req.params.id)
-  pool.query(`SELECT * FROM transaction  WHERE uid = $1`, [id] , (err, data) => {
+  pool.query(
+    `SELECT * FROM transaction  WHERE uid = $1`, [id], (err, data) => {
     if (err) {
       next(err);
     } else {
-      res.json(data.rows);
+      res.status(200).json(data.rows);
     }
   });
 });
@@ -47,18 +48,15 @@ router.post("/post/transaction", (req, res, next) => {
 });
 
 
-router.delete("/delete/transaction:id", (req, res, next) => {
-  console.log("Is the issue here")
-  const id = parseInt(req.params.uid)
-  console.log("Is the issue here")
-  console.log(id);
+router.delete("/delete/transaction/:id", (req, res, next) => {
+  const id = parseInt(req.params.id)
   pool.query(
-    `DELETE FROM transaction WHERE uid = $1`, [id],
-     (error, response) =>{
-      if (error) {
-        throw error;
+    `DELETE FROM transaction WHERE uid = $1`, [id], (err, res) =>{
+      if (err) {
+        next(err);
+      } else {
+        res.json(id);
       }
-      response.status(200).send("Sucesss!");
     });
 });
 
