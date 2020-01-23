@@ -9,12 +9,16 @@ import RealEstate from "./Mortgage_Real_Estate/RealEstate";
 import Tax from "./Tax/Tax";
 import Retirement from "./Retirement/Retirement";
 import NotFound from "./NotFound/NotFound";
+import AppBar from "./Components/AppBar";
+import BottomNav from "./Components/BottomNavigation";
 
 import * as serviceWorker from "./serviceWorker";
 
 const routing = (
+
   <Router>
     <div>
+    <AppBar/>
       <Switch>
         <Route exact path="/" component={App} />
         <Route path="/auto" component={Auto} />
@@ -24,7 +28,9 @@ const routing = (
         <Route path="/retirement" component={Retirement} />
         <Route component={NotFound} />
       </Switch>
+      <BottomNav/>
     </div>
+
   </Router>
 );
 
