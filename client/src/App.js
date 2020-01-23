@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import Layout from "./Components/Layout.js";
 import Paper from "@material-ui/core/Paper";
 import styled from "styled-components";
 import TransactionForm from "./Components/TransactionForm";
@@ -37,7 +36,6 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Layout></Layout>
         <StyledGrid container spacing={3}>
           <StyledGrid sm={6}>
             <Paper>
@@ -49,6 +47,7 @@ class App extends React.Component {
             <TransactionTable data={this.state.list} fetchData={this.fetchData}></TransactionTable>
           </StyledGrid>
         </StyledGrid>
+
       </div>
     );
   }

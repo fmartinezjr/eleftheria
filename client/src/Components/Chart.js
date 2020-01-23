@@ -23,13 +23,15 @@ import axios from "axios";
   render() {
     const chartData =  this.state.transaction_list;
     const priceData = chartData.map(element => element.amount);
-    const Sum = priceData.reduce((a,b) => a + b, 0)
   
     const chartDetails_1 = {
       chart: {
         borderColor: '##ffffff',
         borderWidth: 2,
         type: 'bar',
+        width: 600,
+        marginLeft: 50
+
       },
       title: {
         text: 'Spending Chart'
@@ -49,8 +51,6 @@ import axios from "axios";
 
     return (
       <div>
-        Totoal spent: ${Sum}
-
         <HighchartsReact highcharts={Highcharts} options={chartDetails_1} />
       </div>
  
