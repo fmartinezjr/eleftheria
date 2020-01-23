@@ -51,11 +51,11 @@ router.post("/post/transaction", (req, res, next) => {
 router.delete("/delete/transaction/:id", (req, res, next) => {
   const id = parseInt(req.params.id)
   pool.query(
-    `DELETE FROM transaction WHERE uid = $1`, [id], (err, res) =>{
+    `DELETE FROM transaction WHERE uid = $1`, [id], (err, data) =>{
       if (err) {
         next(err);
       } else {
-        res.json(id);
+        res.status(200).send(`Transaction with the following UID was removed: ${id}`)
       }
     });
 });
