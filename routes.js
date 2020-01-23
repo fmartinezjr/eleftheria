@@ -60,6 +60,18 @@ router.delete("/delete/transaction/:id", (req, res, next) => {
     });
 });
 
+router.delete("/delete/transaction/", (req, res, next) => {
+
+  pool.query(
+    `DELETE FROM transaction`, (err, data) =>{
+      if (err) {
+        next(err);
+      } else {
+        res.status(200).send(`All transactions removed`)
+      }
+    });
+});
+
 router.get("*", (req, res) =>
   res.status(200).send({
     message: "This is not a valid route"
