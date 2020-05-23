@@ -1,6 +1,7 @@
-node_modules
+/node_modules
 build
 .env
 .DS_Store
 data
 sql
+.DS_Store
