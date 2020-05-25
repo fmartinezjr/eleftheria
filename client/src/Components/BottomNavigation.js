@@ -1,6 +1,5 @@
 import React from "react";
 import BottomNavigation from '@material-ui/core/BottomNavigation';
-import Typography from "@material-ui/core/Typography";
 import styled from "styled-components";
 
 

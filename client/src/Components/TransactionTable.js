@@ -9,20 +9,10 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
-import Button from '@material-ui/core/Button';
 
 const StyledPaper = styled(Paper)`
   padding: 5px;
   border: 5px;
-`;
-
-const StyledButton = styled(Button)`
-  && {
-    background-color: #00cdbe;
-    margin: 10px;
-    color: white;
-
-  }
 `;
 
 const StyledTable = styled(Table)`
