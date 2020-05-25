@@ -4,7 +4,8 @@ var createError = require("http-errors");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-var indexRouter = require("./routes");
+var indexRouter = require("./routes/routes");
+var authRouter = require("./routes/auth");
 var app = express();
 var PORT = process.env.PORT;
 
@@ -17,6 +18,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "/build")));
 
 app.use("/api", indexRouter);
+app.use("/auth", authRouter);
 
 // Handles any requests that don't match the ones above
 app.get("*", (req, res) => {
