@@ -11,6 +11,8 @@ const Auth0Strategy = require("passport-auth0");
 
 require("dotenv").config();
 
+var indexRouter = require("./routes/routes");
+var authRouter = require("./routes/auth");
 /**
  * App Variables
  */
@@ -64,9 +66,6 @@ const strategy = new Auth0Strategy(
  *  App Configuration
  */
 
-var indexRouter = require("./routes/routes");
-var authRouter = require("./routes/auth");
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -87,9 +86,16 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
+
+// Creating custom middleware with Express
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated();
+  next();
+});
+
+// Router mounting
 app.use("/api", indexRouter);
 app.use("/auth", authRouter);
-
 
 
 // Handles any requests that don't match the ones above

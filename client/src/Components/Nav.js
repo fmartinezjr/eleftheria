@@ -12,6 +12,7 @@ export default function Nav() {
           <Tab label="Real Estate" href="/realestate" />
           <Tab label="Tax" href="/tax" />
           <Tab label="Retirement" href="/retirement" />
+          <Tab label="Login" href="/auth/login" />
         </Tabs>
       </div>
     );

@@ -7,6 +7,7 @@ import Auto from "./Auto/Auto";
 import Investment from "./Investment/Investment";
 import RealEstate from "./Mortgage_Real_Estate/RealEstate";
 import Tax from "./Tax/Tax";
+import Login from "./Login/Login";
 import Retirement from "./Retirement/Retirement";
 import NotFound from "./NotFound/NotFound";
 import AppBar from "./Components/AppBar";
@@ -26,6 +27,7 @@ const routing = (
         <Route path="/realestate" component={RealEstate} />
         <Route path="/tax" component={Tax} />
         <Route path="/retirement" component={Retirement} />
+        <Route path="/login" component={Login} />
         <Route component={NotFound} />
       </Switch>
       <BottomNav/>
