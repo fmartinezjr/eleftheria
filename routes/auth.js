@@ -8,12 +8,35 @@ const passport = require("passport");
 const util = require("util");
 const url = require("url");
 const querystring = require("querystring");
+var pool = require("../db");
+
 
 require("dotenv").config();
 
 /**
  * Routes Definitions
  */
+
+const secured = (req, res, next) => {
+  if (req.user) {
+    return next();
+  }
+  req.session.returnTo = req.originalUrl;
+  res.redirect("/login");
+};
+
+router.get("/get/transaction", (req, res, next) => {
+
+  pool.query(`SELECT * FROM transaction ORDER BY merchant ASC`, (err, data) => {
+    if (err) {
+      next(err);
+    } else {
+      res.json(data.rows);
+    }
+  });
+  
+});
+
 
 router.get(
     "/login",

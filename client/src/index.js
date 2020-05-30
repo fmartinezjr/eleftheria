@@ -11,6 +11,8 @@ import Login from "./Login/Login";
 import Retirement from "./Retirement/Retirement";
 import NotFound from "./NotFound/NotFound";
 import AppBar from "./Components/AppBar";
+import UserInfo from "./UserInformation/UserInformation.js";
+
 import BottomNav from "./Components/BottomNavigation";
 
 import * as serviceWorker from "./serviceWorker";
@@ -27,6 +29,7 @@ const routing = (
         <Route path="/realestate" component={RealEstate} />
         <Route path="/tax" component={Tax} />
         <Route path="/retirement" component={Retirement} />
+        <Route path="/userinformation" component={UserInfo} />
         <Route path="/login" component={Login} />
         <Route component={NotFound} />
       </Switch>
