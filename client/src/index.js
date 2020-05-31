@@ -11,7 +11,8 @@ import Login from "./Login/Login";
 import Retirement from "./Retirement/Retirement";
 import NotFound from "./NotFound/NotFound";
 import AppBar from "./Components/AppBar";
-import UserInfo from "./UserInformation/UserInformation.js";
+import UserInfo from "./UserInformation/UserInformation";
+import NotAuthorized from "./NotFound/NotAuthorized";
 
 import BottomNav from "./Components/BottomNavigation";
 
@@ -31,6 +32,7 @@ const routing = (
         <Route path="/retirement" component={Retirement} />
         <Route path="/userinformation" component={UserInfo} />
         <Route path="/login" component={Login} />
+        <Route path="/notauthorized" component={NotAuthorized} />
         <Route component={NotFound} />
       </Switch>
       <BottomNav/>
