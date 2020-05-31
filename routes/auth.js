@@ -18,14 +18,17 @@ require("dotenv").config();
  */
 
 const secured = (req, res, next) => {
-  if (req.user) {
+  if (req.isAuthenticated()) {
+
+    console.log("has access")
     return next();
   }
-  req.session.returnTo = req.originalUrl;
-  res.redirect("/login");
+  console.log("no access")
+  //res.redirect("/notauthorized");:Wq
+  res.status(401).send(`Unauthorized - User not authenticated`)
 };
 
-router.get("/get/transaction", (req, res, next) => {
+router.get("/get/transaction",  (req, res, next) => {
 
   pool.query(`SELECT * FROM transaction ORDER BY merchant ASC`, (err, data) => {
     if (err) {
@@ -92,10 +95,11 @@ router.get("/logout", (req, res) => {
     res.redirect(logoutURL);
   });
 
-  router.get("/get/userinformation", (req, res, next) => {
-    //const { _raw, _json, ...userProfile } = req.user;
+  router.get("/get/userinformation", secured, (req, res, next) => {
+    res.locals.isAuthenticated = req.isAuthenticated();
+    //const { ...userProfile } = req.user;
     const array = [
-      {firstname : "Malcom", lastname: "Reynolds"},
+      {firstname : "secured", lastname: "Reynolds"},
       {firstname : "Kaylee", lastname: "Frye"},
       {firstname : "Jayne", lastname: "Cobb"}
     ]
