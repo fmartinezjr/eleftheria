@@ -92,4 +92,14 @@ router.get("/logout", (req, res) => {
     res.redirect(logoutURL);
   });
 
+  router.get("/get/userinformation", (req, res, next) => {
+    //const { _raw, _json, ...userProfile } = req.user;
+    const array = [
+      {firstname : "Malcom", lastname: "Reynolds"},
+      {firstname : "Kaylee", lastname: "Frye"},
+      {firstname : "Jayne", lastname: "Cobb"}
+    ]
+    res.json(array)
+  });
+
 module.exports = router;

@@ -13,41 +13,32 @@ const StyledGrid = styled(Grid)`
 `;
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      list: []
-    };
-    this.fetchData = this.fetchData.bind(this);
-    this.reloadData = this.reloadData.bind(this);
+  state = {
+    persons: []
   }
 
-  reloadData(state) {
-    this.fetchData();
-  }
 
-  fetchData() {
-    axios.get(`auth/get/transaction`).then(res => {
-      this.setState({list: res.data });
-    });
-
+  componentDidMount() {
+    axios.get(`auth/get/userinformation`)
+      .then(res => {
+        const persons = res.data;
+        this.setState({ persons });
+      })
   }
 
   render() {
     return (
       <div>
-        <StyledGrid container spacing={3}>
-          <StyledGrid sm={6}>
             <Paper>
-            <TransactionForm reloadData={this.reloadData}></TransactionForm>
+            <h1>User Information</h1>
             </Paper>
-            <Chart></Chart>
-          </StyledGrid>
-          <StyledGrid sm={6}>
-            <TransactionTable data={this.state.list} fetchData={this.fetchData}></TransactionTable>
-          </StyledGrid>
-        </StyledGrid>
-
+            <Paper>
+              Before
+            <ul>
+            { this.state.persons.map(person => <li>{person.firstname} {person.lastname}</li>)}
+            </ul>
+            After
+            </Paper>
       </div>
     );
   }
