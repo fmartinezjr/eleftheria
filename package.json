@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd client && npm run-script build && mv build ../",
     "client": "cd client && npm start",
-    "start": "npm run build && nodemon server.js",
+    "start": "npm run build && node server.js",
     "dev": "concurrently --kill-others-on-fail \"npm run client\" \"nodemon server.js\""
   },
   "repository": {

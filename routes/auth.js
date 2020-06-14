@@ -6,27 +6,15 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 const util = require("util");
-const url = require("url");
 const querystring = require("querystring");
 var pool = require("../db");
-
-
+const { secured } = require("./secured.js")
 require("dotenv").config();
 
 /**
  * Routes Definitions
  */
 
-const secured = (req, res, next) => {
-  if (req.isAuthenticated()) {
-
-    console.log("has access")
-    return next();
-  }
-  console.log("no access")
-  //res.redirect("/notauthorized");:Wq
-  res.status(401).send(`Unauthorized - User not authenticated`)
-};
 
 router.get("/get/transaction",  (req, res, next) => {
 
@@ -95,7 +83,7 @@ router.get("/logout", (req, res) => {
     res.redirect(logoutURL);
   });
 
-  router.get("/get/userinformation", secured, (req, res, next) => {
+  router.get("/get/userinformation",secured, (req, res, next) => {
     res.locals.isAuthenticated = req.isAuthenticated();
     //const { ...userProfile } = req.user;
     const array = [
