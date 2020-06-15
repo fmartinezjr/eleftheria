@@ -7,27 +7,11 @@ const router = express.Router();
 const passport = require("passport");
 const util = require("util");
 const querystring = require("querystring");
-var pool = require("../db");
-const { secured } = require("./secured.js")
 require("dotenv").config();
 
 /**
  * Routes Definitions
  */
-
-
-router.get("/get/transaction",  (req, res, next) => {
-
-  pool.query(`SELECT * FROM transaction ORDER BY merchant ASC`, (err, data) => {
-    if (err) {
-      next(err);
-    } else {
-      res.json(data.rows);
-    }
-  });
-  
-});
-
 
 router.get(
     "/login",
@@ -40,12 +24,13 @@ router.get(
   );
 
 router.get("/callback", (req, res, next) => {
+  console.log("body parsing", req.body);
   passport.authenticate("auth0", (err, user, info) => {
-    if (err) {
+    if (err) {console.log(err)
       return next(err);
     }
     if (!user) {
-      return res.redirect("/login");
+      return res.redirect("/");
     }
     req.logIn(user, (err) => {
       if (err) {
@@ -53,7 +38,7 @@ router.get("/callback", (req, res, next) => {
       }
       const returnTo = req.session.returnTo;
       delete req.session.returnTo;
-      res.redirect(returnTo || "/");
+      res.redirect(returnTo || "/login");
     });
   })(req, res, next);
 });
@@ -63,6 +48,7 @@ router.get("/logout", (req, res) => {
   
     let returnTo = req.protocol + "://" + req.hostname;
     const port = req.connection.localPort;
+
   
     if (port !== undefined && port !== 80 && port !== 443) {
       returnTo =
@@ -81,17 +67,6 @@ router.get("/logout", (req, res) => {
     logoutURL.search = searchString;
   
     res.redirect(logoutURL);
-  });
-
-  router.get("/get/userinformation",secured, (req, res, next) => {
-    res.locals.isAuthenticated = req.isAuthenticated();
-    //const { ...userProfile } = req.user;
-    const array = [
-      {firstname : "secured", lastname: "Reynolds"},
-      {firstname : "Kaylee", lastname: "Frye"},
-      {firstname : "Jayne", lastname: "Cobb"}
-    ]
-    res.json(array)
   });
 
 module.exports = router;

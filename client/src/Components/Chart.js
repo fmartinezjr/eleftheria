@@ -13,6 +13,10 @@ import axios from "axios";
   
     componentDidMount() {
       axios.get(`api/get/transaction`).then(res => {
+        console.log("res")
+        console.log(JSON.stringify(res))
+        console.log("res")
+        console.log(res.data)
         const transaction_list = res.data;
         this.setState({ transaction_list });
       });
