@@ -7,9 +7,8 @@ var dotenv = require('dotenv');
 var passport = require('passport');
 var Auth0Strategy = require('passport-auth0');
 var flash = require('connect-flash');
-//var userInViews = require('./lib/middleware/userInViews');
+var userInViews = require('./routes/userInViews');
 var authRouter = require('./routes/auth');
-var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var transactionRouter = require('./routes/transaction');
 
@@ -93,17 +92,16 @@ app.use(function (req, res, next) {
   next();
 });
 
-//app.use(userInViews()); 
-app.use('/api/', authRouter);
-//app.use('/api/', indexRouter);
-app.use('/api/', usersRouter);
-app.use('/api/', transactionRouter);
-
+app.use(userInViews()); 
+app.use('/auth', authRouter);
+app.use('/api', usersRouter);
+app.use('/api', transactionRouter);
 
 // Handles any requests that don't match the ones above
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
 });    
+
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}.`);
 });

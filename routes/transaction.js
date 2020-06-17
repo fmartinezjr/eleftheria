@@ -1,10 +1,9 @@
 var express = require('express');
 var secured = require('./secured.js');
 var router = express.Router();
-
+var pool = require("../db");
 
 router.get("/get/transaction",(req, res, next) => {
-  console.log(res.locals.isAuthenticated);
 
   pool.query(`SELECT * FROM transaction ORDER BY merchant ASC`, (err, data) => {
     if (err) {
@@ -16,7 +15,7 @@ router.get("/get/transaction",(req, res, next) => {
 });
 
 router.get("/get/transaction/:id", (req, res, next) => {
-  console.log(res.locals.isAuthenticated);
+
   const id = parseInt(req.params.id)
   pool.query(
     `SELECT * FROM transaction  WHERE uid = $1`, [id], (err, data) => {
@@ -30,7 +29,7 @@ router.get("/get/transaction/:id", (req, res, next) => {
 
 
 router.post("/post/transaction", (req, res, next) => {
-  console.log(res.locals.isAuthenticated);
+
   const { merchant, payment_type, amount } = req.query;
   pool.query(
     `INSERT INTO transaction (merchant, payment_type, amount) VALUES ($1, $2, $3)`,
@@ -51,7 +50,7 @@ router.post("/post/transaction", (req, res, next) => {
 });
 
 router.put("/put/transaction/:id", (req, res, next) => {
-  console.log(res.locals.isAuthenticated);
+
   const id = parseInt(req.params.id)
   const { merchant, payment_type, amount } = req.query;
 
@@ -98,7 +97,7 @@ router.delete("/delete/transaction/", (req, res, next) => {
 });
 
 router.get("/get/userinformation/", secured, (req, res, next) => {
-  console.log(res.locals.isAuthenticated);
+
   res.locals.isAuthenticated = req.isAuthenticated();
   //const { ...userProfile } = req.user;
   const array = [

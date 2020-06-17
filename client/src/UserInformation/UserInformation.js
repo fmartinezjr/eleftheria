@@ -22,10 +22,9 @@ class App extends React.Component {
 
 
   componentDidMount() {
-    axios.get(`api/get/userinformation`)
+    axios.get(`api/get/user`)
       .then(res => {
 
- 
         if (res.data == '') {
           console.log("no data");
       }
@@ -49,9 +48,7 @@ class App extends React.Component {
             <h1>User Information</h1>
             </Paper>
             <Paper>
-            <ul>
-            { this.state.persons.map(person => <li>{person.firstname} {person.lastname}</li>)}
-            </ul>
+
             </Paper>
       </div>
     );
