@@ -11,7 +11,7 @@ class Login extends React.Component {
       return (
         <div>
           <Paper >
-              <div>Logged In</div>
+              <div>You need to Login to view this Page</div>
           </Paper>
 
         </div>

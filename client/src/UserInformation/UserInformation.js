@@ -22,7 +22,7 @@ class App extends React.Component {
 
 
   componentDidMount() {
-    axios.get(`/get/userinformation`)
+    axios.get(`api/get/userinformation`)
       .then(res => {
 
  

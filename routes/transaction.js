@@ -1,6 +1,7 @@
-var router = require("./auth.js");
-var pool = require("../db");
-const { secured } = require("./secured.js")
+var express = require('express');
+var secured = require('./secured.js');
+var router = express.Router();
+
 
 router.get("/get/transaction",(req, res, next) => {
   console.log(res.locals.isAuthenticated);
