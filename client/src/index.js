@@ -19,10 +19,9 @@ import BottomNav from "./Components/BottomNavigation";
 import * as serviceWorker from "./serviceWorker";
 
 const routing = (
-
   <Router>
     <div>
-    <AppBar/>
+      <AppBar />
       <Switch>
         <Route exact path="/" component={App} />
         <Route path="/auto" component={Auto} />
@@ -35,9 +34,8 @@ const routing = (
         <Route path="/notauthorized" component={NotAuthorized} />
         <Route component={NotFound} />
       </Switch>
-      <BottomNav/>
+      <BottomNav />
     </div>
-
   </Router>
 );
 

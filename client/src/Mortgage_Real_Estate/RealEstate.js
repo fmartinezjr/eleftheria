@@ -6,7 +6,7 @@ class RealEstate extends React.Component {
     return (
       <div>
         <Typography variant="h5" component="h3">
-        This is the Real Estate Page. More content comming soon!
+          This is the Real Estate Page. More content comming soon!
         </Typography>
       </div>
     );

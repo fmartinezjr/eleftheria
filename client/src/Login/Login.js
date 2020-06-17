@@ -6,17 +6,14 @@ import Grid from "@material-ui/core/Grid";
 import axios from "axios";
 
 class Login extends React.Component {
-  
-    render() {
-      return (
-        <div>
-          <Paper >
-              <div>You need to Login to view this Page</div>
-          </Paper>
-
-        </div>
-      );
-    }
+  render() {
+    return (
+      <div>
+        <Paper>
+          <div>You need to Login to view this Page</div>
+        </Paper>
+      </div>
+    );
   }
-  export default Login;
-  
+}
+export default Login;

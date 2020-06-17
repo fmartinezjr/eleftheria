@@ -14,42 +14,29 @@ const StyledGrid = styled(Grid)`
 
 class App extends React.Component {
   state = {
-    persons: [
-      {firstname : "Unsecure", lastname: "Reynolds"},
-      {firstname : "Jayne", lastname: "Cobb"}
-    ]
-  }
-
+    persons: [{ firstname: "Unathorized", lastname: "401" }]
+  };
 
   componentDidMount() {
-    axios.get(`api/get/user`)
-      .then(res => {
-
-        if (res.data == '') {
-          console.log("no data");
-      }
-      else {
-        console.log("data returned");
+    axios.get(`api/get/user`).then(res => {
+      if (res.status === 401) {
+        console.log("401");
+      } else {
+        console.log("User data displayed");
         console.log(res.data);
         const persons = res.data;
         this.setState({ persons });
-
       }
-
-
-
-      })
+    });
   }
 
   render() {
     return (
       <div>
-            <Paper>
-            <h1>User Information</h1>
-            </Paper>
-            <Paper>
-
-            </Paper>
+        <Paper>
+          <h1>User Information</h1>
+        </Paper>
+        <Paper></Paper>
       </div>
     );
   }

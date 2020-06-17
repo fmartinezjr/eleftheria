@@ -28,9 +28,8 @@ class App extends React.Component {
 
   fetchData() {
     axios.get(`api/get/transaction`).then(res => {
-      this.setState({list: res.data });
+      this.setState({ list: res.data });
     });
-
   }
 
   render() {
@@ -39,15 +38,17 @@ class App extends React.Component {
         <StyledGrid container spacing={3}>
           <StyledGrid sm={6}>
             <Paper>
-            <TransactionForm reloadData={this.reloadData}></TransactionForm>
+              <TransactionForm reloadData={this.reloadData}></TransactionForm>
             </Paper>
             <Chart></Chart>
           </StyledGrid>
           <StyledGrid sm={6}>
-            <TransactionTable data={this.state.list} fetchData={this.fetchData}></TransactionTable>
+            <TransactionTable
+              data={this.state.list}
+              fetchData={this.fetchData}
+            ></TransactionTable>
           </StyledGrid>
         </StyledGrid>
-
       </div>
     );
   }
