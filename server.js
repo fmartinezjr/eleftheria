@@ -47,8 +47,6 @@ const app = express();
 const PORT = process.env.PORT;
 
 
-app.use(express.static(path.join(__dirname, 'build')));
-
 app.use(logger('dev'));
 app.use(cookieParser());
 
@@ -78,11 +76,12 @@ app.use(session(sess));
 
 app.use(passport.initialize());
 app.use(passport.session());
-
+app.use(express.static(path.join(__dirname, 'build')));
 app.use(flash());
 
 // Handle auth failure error messages
 app.use(function (req, res, next) {
+  console.log(res.locals.user)
   if (req && req.query && req.query.error) {
     req.flash('error', req.query.error);
   } 

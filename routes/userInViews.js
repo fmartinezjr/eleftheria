@@ -6,6 +6,8 @@
  */
 module.exports = function () {
   return function (req, res, next) {
+    console.log("res.locals.user")
+    console.log(res.locals.user)
     res.locals.user = req.user;
     next();
   };
