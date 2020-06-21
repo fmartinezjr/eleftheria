@@ -1,16 +1,8 @@
 import React from "react";
 import "../App.css";
 import Paper from "@material-ui/core/Paper";
-import styled from "styled-components";
-import TransactionForm from "../Components/TransactionForm";
-import TransactionTable from "../Components/TransactionTable";
-import { Chart } from "../Components/Chart";
-import Grid from "@material-ui/core/Grid";
 import axios from "axios";
 
-const StyledGrid = styled(Grid)`
-  border: 2px;
-`;
 
 class App extends React.Component {
   state = {

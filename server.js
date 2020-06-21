@@ -36,7 +36,7 @@ app.use(express.static(path.join(__dirname, "build")));
 
 // config express-session
 const session = {
-  secret: "LoxodontaElephasMammuthusPalaeoloxodonPrimelephas",
+  secret: process.env.SECRET,
   cookie: {},
   resave: false,
   saveUninitialized: false

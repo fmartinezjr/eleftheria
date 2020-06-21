@@ -3,6 +3,6 @@ module.exports = function() {
     if (req.user) {
       return next();
     }
-    res.send(401);
+    res.sendStatus(401);
   };
 };
