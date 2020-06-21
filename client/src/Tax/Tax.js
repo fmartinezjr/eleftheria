@@ -6,7 +6,7 @@ class Tax extends React.Component {
     return (
       <div>
         <Typography variant="h5" component="h3">
-        This is the Tax Page. More content comming soon!
+          This is the Tax Page. More content comming soon!
         </Typography>
       </div>
     );
