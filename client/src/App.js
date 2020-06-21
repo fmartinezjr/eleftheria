@@ -27,7 +27,7 @@ class App extends React.Component {
   }
 
   fetchData() {
-    axios.get(`api/get/transaction`).then(res => {
+    axios.get(`/get/transaction`).then(res => {
       this.setState({ list: res.data });
     });
   }

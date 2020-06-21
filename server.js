@@ -1,17 +1,13 @@
-var express = require('express');
-var path = require('path');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var session = require('express-session');
-var dotenv = require('dotenv');
-var passport = require('passport');
-var Auth0Strategy = require('passport-auth0');
-var flash = require('connect-flash');
-var userInViews = require('./routes/userInViews');
-var authRouter = require('./routes/auth');
-var usersRouter = require('./routes/users');
-var transactionRouter = require('./routes/transaction');
-
+var express = require("express");
+var path = require("path");
+const expressSession = require("express-session");
+var dotenv = require("dotenv");
+var passport = require("passport");
+var Auth0Strategy = require("passport-auth0");
+var authRouter = require("./routes/auth");
+var transactionRouter = require("./routes/transaction");
+var userRouter = require("./routes/user");
+var secured = require("./routes/secured.js");
 
 dotenv.config();
 
@@ -22,9 +18,9 @@ var strategy = new Auth0Strategy(
     clientID: process.env.AUTH0_CLIENT_ID,
     clientSecret: process.env.AUTH0_CLIENT_SECRET,
     callbackURL:
-      process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000/callback'
+      process.env.AUTH0_CALLBACK_URL || "http://localhost:8080/callback"
   },
-  function (accessToken, refreshToken, extraParams, profile, done) {
+  function(accessToken, refreshToken, extraParams, profile, done) {
     // accessToken is the token to call Auth0 API (not needed in the most cases)
     // extraParams.id_token has the JSON Web Token
     // profile has all the information from the user
@@ -32,110 +28,51 @@ var strategy = new Auth0Strategy(
   }
 );
 
-passport.use(strategy);
-
-// You can use this section to keep a smaller payload
-passport.serializeUser(function (user, done) {
-  done(null, user);
-});
-
-passport.deserializeUser(function (user, done) {
-  done(null, user);
-});
-
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || "8080";
 
-
-app.use(logger('dev'));
-app.use(cookieParser());
+app.set("views", path.join(__dirname, "build"));
+app.use(express.static(path.join(__dirname, "build")));
 
 // config express-session
-var sess = {
-  secret: 'LoxodontaElephasMammuthusPalaeoloxodonPrimelephas',
+const session = {
+  secret: "LoxodontaElephasMammuthusPalaeoloxodonPrimelephas",
   cookie: {},
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: false
 };
 
-if (app.get('env') === 'production') {
-  // If you are using a hosting provider which uses a proxy (eg. Heroku),
-  // comment in the following app.set configuration command
-  //
-  // Trust first proxy, to prevent "Unable to verify authorization request state."
-  // errors with passport-auth0.
-  // Ref: https://github.com/auth0/passport-auth0/issues/70#issuecomment-480771614
-  // Ref: https://www.npmjs.com/package/express-session#cookiesecure
-  // app.set('trust proxy', 1);
-  
-  sess.cookie.secure = true; // serve secure cookies, requires https
-}
-
-
-app.use(session(sess));
-
+app.use(expressSession(session));
+passport.use(strategy);
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static(path.join(__dirname, 'build')));
-app.use(flash());
 
-// Handle auth failure error messages
-app.use(function (req, res, next) {
-  console.log(res.locals.user)
-  if (req && req.query && req.query.error) {
-    req.flash('error', req.query.error);
-  } 
-  if (req && req.query && req.query.error_description) {
-    req.flash('error_description', req.query.error_description);
-  }
+// You can use this section to keep a smaller payload
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
+// Creating custom middleware with Express
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated();
   next();
 });
 
-app.use(userInViews()); 
-app.use('/auth', authRouter);
-app.use('/api', usersRouter);
-app.use('/api', transactionRouter);
+app.use("/", authRouter);
+app.use("/", transactionRouter);
+app.use("/", userRouter);
 
 // Handles any requests that don't match the ones above
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
-});    
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "build", "index.html"));
+});
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}.`);
 });
-
-
-// Catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  const err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
-
-// Error handlers
-
-// Development error handler
-// Will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(function (err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
-  });
-}
-
-// Production error handler
-// No stacktraces leaked to user
-app.use(function (err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
-});
-
 
 module.exports = app;

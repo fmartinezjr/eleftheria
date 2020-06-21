@@ -18,7 +18,7 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    axios.get(`api/get/user`).then(res => {
+    axios.get(`/get/user`).then(res => {
       if (res.status === 401) {
         console.log("401");
       } else {

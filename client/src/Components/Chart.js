@@ -9,7 +9,7 @@ export class Chart extends React.Component {
   };
 
   componentDidMount() {
-    axios.get(`api/get/transaction`).then(res => {
+    axios.get(`/get/transaction`).then(res => {
       const transaction_list = res.data;
       this.setState({ transaction_list });
     });

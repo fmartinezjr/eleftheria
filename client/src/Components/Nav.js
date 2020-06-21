@@ -13,9 +13,9 @@ class Nav extends React.Component {
     const isAuthenticated = this.state.isAuthenticated;
     let loginTab;
     if (isAuthenticated) {
-      loginTab = <Tab label="Logout" href="/auth/logout" />;
+      loginTab = <Tab label="Logout" href="/logout" />;
     } else {
-      loginTab = <Tab label="Login" href="/auth/login" />;
+      loginTab = <Tab label="Login" href="/login" />;
     }
     return (
       <div>

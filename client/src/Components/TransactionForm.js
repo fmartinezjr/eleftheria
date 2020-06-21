@@ -47,7 +47,7 @@ export default class TransactionForm extends React.Component {
     //using axios to post to my express api. the object "data" is the payload
     axios
       .post(
-        "api/post/transaction",
+        "/post/transaction",
         { data },
         {
           params: {
