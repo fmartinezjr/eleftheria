@@ -10,15 +10,17 @@ import Tax from "./Tax/Tax";
 import Retirement from "./Retirement/Retirement";
 import NotFound from "./NotFound/NotFound";
 import AppBar from "./Components/AppBar";
+import UserInfo from "./UserInformation/UserInformation";
+import NotAuthorized from "./NotFound/NotAuthorized";
+
 import BottomNav from "./Components/BottomNavigation";
 
 import * as serviceWorker from "./serviceWorker";
 
 const routing = (
-
   <Router>
     <div>
-    <AppBar/>
+      <AppBar />
       <Switch>
         <Route exact path="/" component={App} />
         <Route path="/auto" component={Auto} />
@@ -26,11 +28,12 @@ const routing = (
         <Route path="/realestate" component={RealEstate} />
         <Route path="/tax" component={Tax} />
         <Route path="/retirement" component={Retirement} />
+        <Route path="/userinformation" component={UserInfo} />
+        <Route path="/notauthorized" component={NotAuthorized} />
         <Route component={NotFound} />
       </Switch>
-      <BottomNav/>
+      <BottomNav />
     </div>
-
   </Router>
 );
 

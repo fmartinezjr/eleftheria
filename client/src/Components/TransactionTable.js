@@ -7,22 +7,12 @@ import TableCell from "@material-ui/core/TableCell";
 import { TableContainer } from "@material-ui/core";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
-import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
-import Button from '@material-ui/core/Button';
+import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
+import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 
 const StyledPaper = styled(Paper)`
   padding: 5px;
   border: 5px;
-`;
-
-const StyledButton = styled(Button)`
-  && {
-    background-color: #00cdbe;
-    margin: 10px;
-    color: white;
-
-  }
 `;
 
 const StyledTable = styled(Table)`
@@ -51,15 +41,14 @@ const StyledH3 = styled.h3`
 export default class TransactionTable extends React.Component {
   state = {
     transaction_list: []
-  }
+  };
 
   componentDidMount() {
+    this.setState({
+      transaction_list: this.props.data
+    });
 
-      this.setState({
-        transaction_list: this.props.data 
-      });
-
-      this.props.fetchData()
+    this.props.fetchData();
   }
 
   render() {
@@ -68,7 +57,6 @@ export default class TransactionTable extends React.Component {
 
     return (
       <StyledPaper>
-
         <TableContainer component={Paper}>
           <StyledTable aria-label="simple table">
             <StyledTableHeader>
@@ -83,7 +71,7 @@ export default class TransactionTable extends React.Component {
                   <StyledH3>Total</StyledH3>
                 </TableCell>
                 <TableCell align="right">
-                <StyledH3>Edit/Delete</StyledH3>
+                  <StyledH3>Edit/Delete</StyledH3>
                 </TableCell>
               </TableRow>
             </StyledTableHeader>
@@ -100,8 +88,8 @@ export default class TransactionTable extends React.Component {
                     $ {transaction_list.amount}
                   </TableCell>
                   <TableCell align="right">
-                    <EditOutlinedIcon/>
-                    <DeleteOutlineIcon/>
+                    <EditOutlinedIcon />
+                    <DeleteOutlineIcon />
                   </TableCell>
                 </TableRow>
               ))}

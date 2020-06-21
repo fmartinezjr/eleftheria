@@ -1,26 +1,74 @@
-require("dotenv").config();
 var express = require("express");
-var createError = require("http-errors");
 var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
-var indexRouter = require("./routes");
-var app = express();
-var PORT = process.env.PORT;
+const expressSession = require("express-session");
+var dotenv = require("dotenv");
+var passport = require("passport");
+var Auth0Strategy = require("passport-auth0");
+var authRouter = require("./routes/auth");
+var transactionRouter = require("./routes/transaction");
+var userRouter = require("./routes/user");
+var secured = require("./routes/secured.js");
 
-app.use(logger("dev"));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+dotenv.config();
 
-// Serve the static files from the React app
-app.use(express.static(path.join(__dirname, "/build")));
+// Configure Passport to use Auth0
+var strategy = new Auth0Strategy(
+  {
+    domain: process.env.AUTH0_DOMAIN,
+    clientID: process.env.AUTH0_CLIENT_ID,
+    clientSecret: process.env.AUTH0_CLIENT_SECRET,
+    callbackURL:
+      process.env.AUTH0_CALLBACK_URL || "http://localhost:8080/callback"
+  },
+  function(accessToken, refreshToken, extraParams, profile, done) {
+    // accessToken is the token to call Auth0 API (not needed in the most cases)
+    // extraParams.id_token has the JSON Web Token
+    // profile has all the information from the user
+    return done(null, profile);
+  }
+);
 
-app.use("/api", indexRouter);
+const app = express();
+const PORT = process.env.PORT || "8080";
+
+app.set("views", path.join(__dirname, "build"));
+app.use(express.static(path.join(__dirname, "build")));
+
+// config express-session
+const session = {
+  secret: process.env.SECRET,
+  cookie: {},
+  resave: false,
+  saveUninitialized: false
+};
+
+app.use(expressSession(session));
+passport.use(strategy);
+app.use(passport.initialize());
+app.use(passport.session());
+
+// You can use this section to keep a smaller payload
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
+// Creating custom middleware with Express
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated();
+  next();
+});
+
+app.use("/", authRouter);
+app.use("/", transactionRouter);
+app.use("/", userRouter);
 
 // Handles any requests that don't match the ones above
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/build/index.html"));
+  res.sendFile(path.resolve(__dirname, "build", "index.html"));
 });
 
 app.listen(PORT, () => {
