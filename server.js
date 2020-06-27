@@ -7,7 +7,6 @@ var Auth0Strategy = require("passport-auth0");
 var authRouter = require("./routes/auth");
 var transactionRouter = require("./routes/transaction");
 var userRouter = require("./routes/user");
-var secured = require("./routes/secured.js");
 
 dotenv.config();
 
@@ -63,8 +62,8 @@ app.use((req, res, next) => {
 });
 
 app.use("/", authRouter);
-app.use("/", transactionRouter);
-app.use("/", userRouter);
+app.use("/api/", transactionRouter);
+app.use("/user/", userRouter);
 
 // Handles any requests that don't match the ones above
 app.get("*", (req, res) => {

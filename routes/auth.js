@@ -8,11 +8,16 @@ const passport = require("passport");
 const util = require("util");
 const url = require("url");
 const querystring = require("querystring");
+var secured = require("./secured.js");
 require("dotenv").config();
 
 /**
  * Routes Definitions
  */
+
+router.get("/isAuthenticated", secured(), (req, res, next) => {
+  res.status(200).send(req.isAuthenticated());
+});
 
 router.get(
   "/login",
