@@ -3,7 +3,6 @@ import "../App.css";
 import Paper from "@material-ui/core/Paper";
 import axios from "axios";
 
-
 class App extends React.Component {
   state = {
     persons: [{ firstname: "Unathorized", lastname: "401" }]
@@ -26,9 +25,7 @@ class App extends React.Component {
         <Paper>
           <h1>User Information</h1>
         </Paper>
-        <Paper>
-          {this.state.userData}
-        </Paper>
+        <Paper>{this.state.userData}</Paper>
       </div>
     );
   }

@@ -11,23 +11,23 @@ class Nav extends React.Component {
 
   componentDidMount() {
     axios.get(`/isAuthenticated`).then(res => {
-      const isAuthenticated = res.data
+      const isAuthenticated = res.data;
       this.setState({ isAuthenticated });
     });
   }
 
   render() {
-
-    const isAuthenticated =this.state.isAuthenticated
-    console.log("render: isAuthenticated ", isAuthenticated)
-
+    const isAuthenticated = this.state.isAuthenticated;
+    console.log("render: isAuthenticated ", isAuthenticated);
 
     let loggedInTabs;
     if (isAuthenticated) {
-      loggedInTabs = <React.Fragment>
-                <Tab label="User Info" href="/userinformation" />
-        <Tab label="Logout" href="/logout" />
-      </React.Fragment>;
+      loggedInTabs = (
+        <React.Fragment>
+          <Tab label="User Info" href="/userinformation" />
+          <Tab label="Logout" href="/logout" />
+        </React.Fragment>
+      );
     } else {
       loggedInTabs = <Tab label="Login" href="/login" />;
     }
