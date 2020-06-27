@@ -14,8 +14,6 @@ class App extends React.Component {
       if (res.status === 401) {
         console.log("401");
       } else {
-        console.log("User data displayed");
-        console.log(res.data);
         const userData = res.data;
         this.setState({ userData });
       }
