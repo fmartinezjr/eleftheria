@@ -9,6 +9,16 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
+import Button from "@material-ui/core/Button";
+import axios from "axios";
+
+const StyledButton = styled(Button)`
+  && {
+    background-color: #00cdbe;
+    margin: 10px;
+    color: white;
+  }
+`;
 
 const StyledPaper = styled(Paper)`
   padding: 5px;
@@ -43,6 +53,13 @@ export default class TransactionTable extends React.Component {
     transaction_list: []
   };
 
+  onDelete() {
+	axios.delete(`api/delete/transaction`)
+  .then(res => {
+    console.log(res)
+    console.log('Deleted everything!!')
+})
+}
   componentDidMount() {
     this.setState({
       transaction_list: this.props.data
@@ -57,6 +74,9 @@ export default class TransactionTable extends React.Component {
 
     return (
       <StyledPaper>
+          <StyledButton variant="contained" type="submit" onClick={() => this.onDelete()}>
+          Delete All!
+          </StyledButton>
         <TableContainer component={Paper}>
           <StyledTable aria-label="simple table">
             <StyledTableHeader>
@@ -71,7 +91,10 @@ export default class TransactionTable extends React.Component {
                   <StyledH3>Total</StyledH3>
                 </TableCell>
                 <TableCell align="right">
-                  <StyledH3>Edit/Delete</StyledH3>
+                  <StyledH3>Edit</StyledH3>
+                </TableCell>
+                <TableCell align="right">
+                  <StyledH3>Delete</StyledH3>
                 </TableCell>
               </TableRow>
             </StyledTableHeader>
@@ -86,6 +109,9 @@ export default class TransactionTable extends React.Component {
                   </TableCell>
                   <TableCell align="right">
                     $ {transaction_list.amount}
+                  </TableCell>
+                  <TableCell align="right">
+                    <DeleteOutlineIcon />
                   </TableCell>
                   <TableCell align="right">
                     <EditOutlinedIcon />

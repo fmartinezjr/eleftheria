@@ -30,7 +30,6 @@ const routing = (
         <Route path="/retirement" component={Retirement} />
         <Route path="/userinformation" component={UserInfo} />
         <Route path="/notauthorized" component={NotAuthorized} />
-        <Route component={NotFound} />
       </Switch>
       <BottomNav />
     </div>
